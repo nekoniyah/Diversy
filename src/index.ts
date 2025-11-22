@@ -14,6 +14,8 @@ app.use(cookies());
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.use("/avatars", express.static("avatars"));
+
 app.use("/auth", auth);
 
 app.listen(env.PORT, (err) => {

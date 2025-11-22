@@ -45,8 +45,8 @@ auth.get("/me", async (req, res) => {
 
   if (!user) return res.status(404).json({ message: "User not found" });
 
-  res.cookie("token", user.get("token"));
-  res.status(200).json(exclude(user.get(), ["token"]));
+  res.cookie("auth_token", user.get("token"));
+  res.status(200).json(user.get());
 });
 
 auth.get("/:id", async (req, res) => {
