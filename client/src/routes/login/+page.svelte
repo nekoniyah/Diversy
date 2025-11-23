@@ -61,6 +61,7 @@
 
 <style lang="scss">
 	main {
+		color: black;
 		max-width: 400px;
 		margin: 2em auto;
 		padding: 1em;

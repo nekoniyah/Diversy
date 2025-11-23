@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "bun run --watch ./src/index.ts"
+    "start": "bun run --watch ./src/index.ts",
+    "client": "cd ./client && bun run dev"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",

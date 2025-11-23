@@ -12,9 +12,12 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Navbar />
-
-{@render children()}
+<div class="wrapper">
+	<Navbar />
+	<div class="container">
+		{@render children()}
+	</div>
+</div>
 
 <style lang="scss">
 	:global(html, body) {
@@ -23,5 +26,19 @@
 		font-family: Arial, sans-serif;
 		background-color: #f5f5f5;
 		color: #333;
+	}
+
+	:global(a) {
+		color: #3498db;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		min-height: 100vh;
 	}
 </style>

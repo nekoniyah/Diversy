@@ -1,4 +1,4 @@
-# Diversy - Backend Core
+# Diversy
 
 ![Status](https://img.shields.io/badge/status-in%20development-gold) ![Runtime](https://img.shields.io/badge/runtime-Bun-black) ![License](https://img.shields.io/badge/license-Proprietary-blue)
 
@@ -8,55 +8,50 @@
 
 Diversy est une plateforme sociale de nouvelle génération conçue pour offrir un "refuge créatif" loin du bruit et de la toxicité des réseaux traditionnels.
 
-Ce dépôt contient le **Backend Core** de l'application. Il gère l'authentification, la logique métier, et l'architecture unique de serveurs distribués.
+## Fonctionnalités
 
-### La Philosophie Technique : "Single Client, Forkable Server"
+- [x] Authentification sans mots de passe.
+- [x] Envois de code par email.
+- [ ] Edition de profile (username, avatar)
+- [ ] Custom CSS pour profile
+- [ ] Création de fiche personnage
+- [ ] Messages privées
+- [ ] Système de communauté
+  - [ ] Création
+  - [ ] Edition (Admin)
+  - [ ] Suppresion (Admin)
+  - [ ] Partie Wiki (activable)
+  - [ ] Partie Forums (activable)
+  - [ ] Partie Salons Textuels (par défaut)
+  - [ ] Partie Salonx Vocaux (par défaut)
+- [ ] Liaison des serveurs entre eux
 
-1.  **Unified Client :** Tous les utilisateurs accèdent à la plateforme via une interface frontend unique.
-2.  **Forkable Logic :** Chaque communauté ("Serveur") est une instance gérée via des configurations stockées en BDD, permettant une customisation profonde (modding) tout en restant sur la même infrastructure.
+## A refaire
 
-## 🛠 Tech Stack
+- Authentification sur un serveur global.
 
-- **Runtime & Package Manager :** [Bun](https://bun.sh/) (Performance & TS support natif)
-- **Framework Web :** Express.js
-- **Language :** TypeScript
-- **ORM :** Sequelize
-- **Database :** SQLite
+## La stack
 
-## 🚀 Installation (Dev)
+- **Frontend**: Svelte
+- **Backend**: Bun, Typescript, ExpressJS
+- **Base de donnée**: intégrée au backend - Sequelize (SQLite)
 
-### Prérequis
+## Etat du projet
 
-- [Bun](https://bun.sh/) v1.0+ installé
+Le projet est actuellement en phase de développement initial. Certaines fonctionnalités de base sont implémentées, mais beaucoup restent à faire. Votre contribution est la bienvenue !
 
-### Lancer le projet
+## Contribution
 
-1.  **Cloner le repo :**
+Les contributions sont les bienvenues ! Veuillez consulter le fichier [CONTRIBUTING.md](CONTRIBUTING.md) pour plus de détails.
 
-    ```bash
-    git clone [https://github.com/nekoniyah/diversy-core.git](https://github.com/nekoniyah/diversy-core.git)
-    cd diversy-core
-    ```
+## Licence
 
-2.  **Installer les dépendances (via Bun) :**
+Ce projet est sous licence propriétaire. Veuillez contacter l'auteur pour plus d'informations.
 
-    ```bash
-    bun install
-    ```
+## Contact
 
-3.  **Configuration :**
+Pour toute question ou suggestion, veuillez contacter l'auteur à l'adresse email suivante : contact@diversy.co (ne pas utiliser pour l'instant).
 
-    ```bash
-    cp .env.example .env
-    # Configurer DB_HOST, DB_USER, DB_PASS, etc. dans le .env
-    ```
+## Remerciements
 
-4.  **Lancer en mode développement (Hot Reload) :**
-
-    ```bash
-    bun run dev
-    ```
-
-    _(Note : Le script `dev` doit pointer vers `bun --watch src/index.ts`)_
-
-© 2025 Diversy. Tous droits réservés.
+Merci à tous ceux qui contribuent à ce projet et à la communauté open source pour leur soutien continu.

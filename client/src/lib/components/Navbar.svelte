@@ -10,7 +10,10 @@
 	<div class="profile">
 		{#if $user}
 			<img src={$user.avatar} alt="" />
-			<p>{$user.username ?? $user.email}</p>
+			<div class="info">
+				<p>{$user.username ?? $user.email}</p>
+				<a href="/logout">Logout</a>
+			</div>
 		{:else}
 			<Button label="Login" onClick={() => goto('/login')} />
 		{/if}
@@ -40,9 +43,22 @@
 				margin-bottom: 10px;
 			}
 
-			p {
-				font-size: 1.2em;
-				font-weight: bold;
+			.info {
+				p {
+					margin: 0;
+					font-size: 1.1em;
+					font-weight: bold;
+				}
+
+				a {
+					color: #ecf0f1;
+					text-decoration: none;
+					font-size: 0.9em;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
 			}
 		}
 	}
