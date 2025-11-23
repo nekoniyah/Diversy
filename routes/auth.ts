@@ -7,39 +7,12 @@ import mail from "../utils/mail";
 import token from "../utils/token";
 
 import { env } from "bun";
-import { exclude } from "../utils/db";
+import tokenAuth from "../middlewares/tokenAuth";
 
 const auth = Router();
 
-let getToken = (req: Request, res: Response) => {
-  let token = req.headers.authorization as string | undefined;
-  let fromCookie = false;
-  if (req.cookies.token) {
-    fromCookie = true;
-    token = req.cookies.token;
-  }
-
-  if (!token) {
-    res.status(403).json({ message: "No token provided." });
-    return;
-  }
-
-  if (!fromCookie) {
-    let isBearer = token.split(" ")[0] === "Bearer";
-
-    if (!isBearer) {
-      res.status(403).json({ message: "Invalid token" });
-      return;
-    }
-
-    token = token.split(" ")[1];
-  }
-
-  return token;
-};
-
-auth.get("/me", async (req, res) => {
-  let token = getToken(req, res)!;
+auth.get("/me", tokenAuth, async (req, res) => {
+  let token = res.locals.token!;
 
   let user = await User.findOne({ where: { token } });
 
@@ -49,23 +22,7 @@ auth.get("/me", async (req, res) => {
   res.status(200).json(user.get());
 });
 
-auth.get("/:id", async (req, res) => {
-  let id = req.params.id;
-
-  let user = await User.findByPk(parseInt(id));
-
-  if (!user)
-    return res.status(404).json({
-      message: "User not found",
-    });
-
-  let data = exclude(user.get(), ["token", "email"]);
-
-  res.json(data);
-});
-
-auth.post("/logout", async (req, res) => {
-  getToken(req, res);
+auth.post("/logout", tokenAuth, async (req, res) => {
   res.clearCookie("token");
 });
 

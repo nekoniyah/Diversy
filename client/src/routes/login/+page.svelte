@@ -45,7 +45,7 @@
 		<p>{message}</p>
 	{/if}
 	{#if codeSent}
-		<form on:submit|preventDefault={(e) => verifyCode(e.target?.code.value)}>
+		<form on:submit|preventDefault={(e) => verifyCode((e.target as any).code.value)}>
 			<label for="code">Login Code:</label>
 			<input type="text" id="code" name="code" required />
 			<button type="submit">Verify Code</button>

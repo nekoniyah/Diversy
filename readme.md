@@ -14,6 +14,8 @@ Diversy est une plateforme sociale de nouvelle génération conçue pour offrir 
 - [x] Envois de code par email.
 - [ ] Edition de profile (username, avatar)
 - [ ] Custom CSS pour profile
+- [ ] Système d'amis
+- [ ] Exportation et Importation de compte entre serveurs en JSON
 - [ ] Création de fiche personnage
 - [ ] Messages privées
 - [ ] Système de communauté

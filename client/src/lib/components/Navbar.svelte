@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { apiUrl, user } from '$lib/core-data';
+	import { user } from '$lib/core-data';
 	import Button from './Button.svelte';
 </script>
 

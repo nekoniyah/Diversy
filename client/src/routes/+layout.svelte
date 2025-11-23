@@ -10,6 +10,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>Diversy</title>
 </svelte:head>
 
 <div class="wrapper">
@@ -28,6 +29,10 @@
 		color: #333;
 	}
 
+	:global(body) {
+		background: linear-gradient(135deg, #dac0c0 0%, #fae7ff 100%);
+	}
+
 	:global(a) {
 		color: #3498db;
 		text-decoration: none;
@@ -40,5 +45,12 @@
 	.wrapper {
 		display: flex;
 		min-height: 100vh;
+
+		.container {
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 </style>
