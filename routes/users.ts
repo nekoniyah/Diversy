@@ -8,7 +8,7 @@ const users = Router();
 users.get("/:id", async (req, res) => {
   let id = req.params.id;
 
-  let user = await User.findByPk(parseInt(id));
+  let user = await User.findOne({ where: { id } });
 
   if (!user) {
     user = await User.findOne({ where: { username: id } });

@@ -28,10 +28,11 @@
 
 	const verifyCode = async (code: string) => {
 		try {
-			const response = await axios.post(`${apiUrl}/auth/validate`, { email, code });
-			const token = response.data.data.token;
+			let response = await axios.post(`${apiUrl}/auth/validate`, { email, code });
+			let token = response.data.data.token;
 
 			cookieStore.set('auth_token', token);
+
 			await goto('/');
 		} catch (error) {
 			message = 'Invalid code. Please try again.';

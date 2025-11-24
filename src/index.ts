@@ -7,6 +7,7 @@ import cors from "cors";
 import axios from "axios";
 import manifest from "../instance/manifest.json";
 import path from "path";
+import users from "../routes/users";
 
 const DIRECTORY_SERVER_URL = env.DIRECTORY_SERVER_URL;
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded());
 
 app.use("/avatars", express.static("avatars"));
 app.use("/auth", auth);
+app.use("/users", users);
 
 app.use(
   "/assets",

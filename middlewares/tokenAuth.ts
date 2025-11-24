@@ -4,9 +4,9 @@ const tokenAuth: Handler = async (req, res, next) => {
   let token = req.headers.authorization as string | undefined;
   let fromCookie = false;
 
-  if (req.cookies.token) {
+  if (req.cookies["auth_token"]) {
     fromCookie = true;
-    token = req.cookies.token;
+    token = req.cookies["auth_token"];
   }
 
   if (!token) {

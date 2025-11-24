@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 
 import Code from "../models/Code";
 import User from "../models/User";
@@ -22,8 +22,25 @@ auth.get("/me", tokenAuth, async (req, res) => {
   res.status(200).json(user.get());
 });
 
+auth.put("/me", tokenAuth, async (req, res) => {
+  let token = res.locals.token!;
+  console.log(token);
+  let user = await User.findOne({ where: { token } });
+
+  if (!user) return res.status(404).json({ message: "User not found" });
+
+  let { username, avatar } = req.body;
+
+  if (username) user.set("username", username);
+  if (avatar) user.set("avatar", avatar);
+
+  await user.save();
+
+  res.status(200).json(user.get());
+});
+
 auth.post("/logout", tokenAuth, async (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("auth_token");
 });
 
 auth.post("/validate", async (req, res) => {
