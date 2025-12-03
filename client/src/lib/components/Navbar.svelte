@@ -7,9 +7,10 @@
 </script>
 
 <nav>
+	<img src="/logo.png" alt="Diversy Logo" />
 	<div class="profile">
 		{#if $user}
-			<img src={$user.avatar} alt="" />
+			<a href="/profile"><img src={$user.avatar} alt="" /></a>
 			<div class="info">
 				<p>{$user.username ?? $user.email}</p>
 				<a href="/logout">Logout</a>
@@ -24,8 +25,8 @@
 	nav {
 		width: 250px;
 		height: 100vh;
-		background-color: #2c3e50;
-		color: white;
+		color: #2c3e50;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -61,5 +62,17 @@
 				}
 			}
 		}
+
+		img {
+			width: 150px;
+			margin-bottom: 30px;
+		}
+
+		background: rgba(251, 251, 251, 0.1);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(2.3px);
+		-webkit-backdrop-filter: blur(2.3px);
+		border: 1px solid rgba(251, 251, 251, 0.3);
 	}
 </style>

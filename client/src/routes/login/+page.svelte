@@ -26,14 +26,20 @@
 		}
 	};
 
+	function setCookie(name: string, value: string, days: number) {
+		const date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+		const expires = 'expires=' + date.toUTCString();
+		document.cookie = name + '=' + value + ';' + expires + ';path=/';
+	}
+
 	const verifyCode = async (code: string) => {
 		try {
 			let response = await axios.post(`${apiUrl}/auth/validate`, { email, code });
 			let token = response.data.data.token;
 
-			cookieStore.set('auth_token', token);
-
-			await goto('/');
+			setCookie('auth_token', token, 7);
+			window.location.reload();
 		} catch (error) {
 			message = 'Invalid code. Please try again.';
 		}
@@ -48,13 +54,13 @@
 	{#if codeSent}
 		<form on:submit|preventDefault={(e) => verifyCode((e.target as any).code.value)}>
 			<label for="code">Login Code:</label>
-			<input type="text" id="code" name="code" required />
+			<input type="text" id="code" name="code" required autocomplete="off" />
 			<button type="submit">Verify Code</button>
 		</form>
 	{:else}
 		<form on:submit|preventDefault={sendCode}>
 			<label for="email">Email:</label>
-			<input type="email" id="email" bind:value={email} required />
+			<input type="email" autocomplete="off" id="email" bind:value={email} required />
 			<button type="submit">{codeSent ? 'Resend Code' : 'Send Login Code'}</button>
 		</form>
 	{/if}
@@ -67,8 +73,13 @@
 		margin: 2em auto;
 		padding: 1em;
 		border: 1px solid #ccc;
+
+		background: rgba(251, 251, 251, 0.1);
 		border-radius: 8px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(2.3px);
+		-webkit-backdrop-filter: blur(2.3px);
+		border: 1px solid rgba(251, 251, 251, 0.3);
 	}
 
 	h1 {

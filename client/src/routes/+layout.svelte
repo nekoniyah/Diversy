@@ -30,7 +30,7 @@
 	}
 
 	:global(body) {
-		background: linear-gradient(135deg, #dac0c0 0%, #fae7ff 100%);
+		background: url('/background.png');
 	}
 
 	:global(a) {

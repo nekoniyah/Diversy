@@ -8,5 +8,5 @@ export interface User {
 	avatar?: string;
 }
 
-export const apiUrl = 'http://localhost:4000';
+export let apiUrl = 'http://localhost:4000';
 export const user = writable<null | User>(null);

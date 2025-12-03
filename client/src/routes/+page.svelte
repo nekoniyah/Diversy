@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	onMount(() => {});
+	import { goto } from '$app/navigation';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <main>
@@ -10,14 +9,9 @@
 			<h1 class="bowlby-one-sc-regular">Welcome to Diversy!</h1>
 			<h2 class="ceviche-one-regular">Where your dreams can fly~</h2>
 		</div>
-
 		<div class="cta">
-			<a href="/login">
-				<button>Join!</button>
-			</a>
-			<a href="/discover">
-				<button>Discover</button>
-			</a>
+			<Button label="Join!" onClick={() => goto('/login')} />
+			<Button label="Discover" onClick={() => goto('/discover')} />
 		</div>
 	</div>
 </main>
@@ -70,6 +64,10 @@
 				color: #9b2331;
 			}
 		}
+
+		.cta {
+			transform: translateY(-70px);
+		}
 	}
 
 	main {
@@ -78,22 +76,5 @@
 		align-items: center;
 		justify-content: center;
 		height: 80vh;
-	}
-
-	button {
-		margin: 0 1rem;
-		padding: 1rem 2rem;
-		font-size: 1.5rem;
-		border: 1px solid #ccc;
-		background-color: #701422;
-		color: #fff;
-		border-radius: 20px;
-
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-
-		&:hover {
-			opacity: 0.8;
-		}
 	}
 </style>
